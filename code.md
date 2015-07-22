@@ -187,9 +187,9 @@ Template theme style
 
 ```html
     <style>
-    .theme-background{
-      background-color: rgba(25, 111, 166, 0.8);
-    }
+      .theme-background{
+        background-color: rgba(25, 111, 166, 0.8);
+      }
     </style>
 ```
 
@@ -200,7 +200,6 @@ Config title
 ```javascript
     "title": "My Map",
 ```
-
 
 ## Step 7
 
@@ -270,7 +269,19 @@ Requires for the drawer.
     win,
     on
 ```  
-  
+
+## Add other config options
+
+```javascript
+    "title": "My Map",
+    "color": null,
+    "enableSearch": true,
+    "enableLayerList": true,
+    "enableSummary": true,
+    "summary": "",
+    "search": "",
+```
+
 ## Step 10
 
 LayerList styles to match theme.
@@ -328,9 +339,73 @@ Add search widget.
 
 ## Step 13
 
-Remove style tag in HTML for customizable theme.
+Configuration panel JSON
+
+```javascript
+    {  
+      "configurationSettings":[  
+        {  
+          "category":"<b>Configure template</b>",
+          "fields":[  
+            {  
+              "type":"webmap"
+            },
+            {  
+              "type":"color",
+              "label":"Choose a color for the theme",
+              "fieldName":"color"
+            },
+            {  
+              "type":"string",
+              "fieldName":"title",
+              "label":"Title",
+              "tooltip":"",
+              "stringFieldOption":"textbox"
+            },
+            {  
+              "type":"string",
+              "fieldName":"summary",
+              "label":"Summary",
+              "tooltip":"",
+              "stringFieldOption":"textarea"
+            },
+            {  
+              "type":"boolean",
+              "fieldName":"enableSearch",
+              "label":"Show Search",
+              "tooltip":""
+            },
+            {  
+              "type":"boolean",
+              "fieldName":"enableLayerList",
+              "label":"Show Layer List",
+              "tooltip":""
+            },
+            {  
+              "type":"boolean",
+              "fieldName":"enableSummary",
+              "label":"Show Summary",
+              "tooltip":""
+            }
+          ]
+        }
+      ],
+      "values":{  
+        "title": "",
+        "enableSearch": true,
+        "enableLayerList": true,
+        "enableSummary": true,
+        "summary": "",
+        "search": ""
+      }
+    }
+```
 
 ## Step 14
+
+Remove style tag in HTML for customizable theme.
+
+## Step 15
 
 Require dojo color
 
@@ -361,7 +436,7 @@ Require dojo color
     document.body.appendChild(css);
 ```
 
-## Step 15
+## Step 16
 
 Set boolean config options
 
@@ -377,9 +452,11 @@ Set boolean config options
     if(this.config.enableSummary){}
 ```
 
-## Step 16
+## Step 17
 
-Search url param option
+Search url param option.
+
+Add "search" to config params array in template config.
 
 ```javascript
     if(this.config.search){
