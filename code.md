@@ -2,30 +2,36 @@
 
 ## Step 1
 
+Require LayerList widget
+
 ```"esri/dijit/LayerList",```
 
 ```LayerList```
 
-
 ## Step 2
+
+Add LayerList widget
 
 ```
     var layerList = new LayerList({
       map: this.map
     },"layerListDom");
     layerList.startup();
+```   
+        
 ```
+    <div id="layerListDom"></div>
+```   
         
-        
-```<div id="layerListDom"></div>```
-        
-        
-## Step 3        
+## Step 3
+
+Add HTML for title, and side drawer
         
 ```
     <div class="drawer-container">
       <div class="drawer-side drawer-animation theme-background">
         <h1 id="mapTitle"></h1>
+        <div id="layerListDom"></div>
       </div>
       <div class="drawer-center">
         <div class="drawer-top drawer-animation theme-background">
@@ -39,10 +45,10 @@
       </div>
     </div>
 ```
-  
-  
 
 ## Step 4
+
+Add CSS Styles for the drawer and template theme.
 
 ```
     h1 {
@@ -173,6 +179,8 @@
 
 ## Step 5
 
+Template theme style
+
 ```
     <style>
     .theme-background{
@@ -183,10 +191,16 @@
 
 ## Step 6
 
-```"title": "My Map",```
+Config title
+
+```
+    "title": "My Map",
+```
 
 
 ## Step 7
+
+Set title from config title or map title
 
 ```
     var title = this.config.title || response.itemInfo.item.title;
@@ -196,6 +210,9 @@
 ```
 
 ## Step 8
+
+Drawer responsive code
+
 ```
     // document window
     var w = win.get(document);
@@ -236,8 +253,9 @@
     drawer();
 ```  
         
-        
-## Step 9       
+## Step 9
+
+Requires for the drawer.
 
 ```
     "dojo/window",
@@ -249,7 +267,9 @@
     on
 ```  
   
-## Step 10  
+## Step 10
+
+LayerList styles to match theme.
 
 ```
     .esriLayerList .esriList,
@@ -262,6 +282,8 @@
 
 ## Step 11
 
+LayerList layers that are not basemap layers.
+
 ```
     var layers = arcgisUtils.getLayerList(response);
         
@@ -270,30 +292,26 @@
       map: this.map
     },"layerListDom");
     layerList.startup();
-```  
-        
-        
-```        
-    <div id="layerListDom"></div>
 ```
   
 ## Step 12
 
+Add search widget.
+
 ```
-        "esri/dijit/Search",
- ```       
+    "esri/dijit/Search",
+```       
+              
+```       
+    var search = new Search({
+      map: this.map
+    },"search");
+    search.startup();
+```       
         
-        
- ```       
-        var search = new Search({
-          map: this.map
-        },"search");
-        search.startup();
- ```       
-        
-  ```      
-        <div id="search"></div>
-  ```      
+```      
+    <div id="search"></div>
+```      
         
 ```    
     #search {
@@ -306,9 +324,11 @@
 
 ## Step 13
 
-Remove style tag in HTML
+Remove style tag in HTML for customizable theme.
 
 ## Step 14
+
+Require dojo color
 
 ```
     "dojo/_base/Color",
@@ -339,6 +359,8 @@ Remove style tag in HTML
 
 ## Step 15
 
+Set boolean config options
+
 ```
     if (this.config.enableLayerList){}
 ```
@@ -352,6 +374,8 @@ Remove style tag in HTML
 ```
 
 ## Step 16
+
+Search url param option
 
 ```
     if(this.config.search){
