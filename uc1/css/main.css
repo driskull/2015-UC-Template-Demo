@@ -1,0 +1,202 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#mapDiv {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.esriRTL label {
+  /*Example of a rule that will be applied if the app is viewed in a browser with a RTL locale like Hebrew or Arabic.*/
+}
+
+.loading-indicator {
+  /* Loading status */
+  
+  display: none;
+  height: 100%;
+  width: 100%;
+  z-index: 500;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background: #fff;
+}
+
+.app-loading .loading-indicator,
+.app-error .loading-indicator {
+  /* Show this class when loading or error */
+  
+  display: block;
+}
+
+.app-loading .loading-indicator {
+  /* Loading image */
+  
+  background-position: center center;
+  background-image: url(../images/ajax-loader.gif);
+  background-repeat: no-repeat;
+}
+
+.app-error .loading-message {
+  /* Error status */
+  
+  background-position: top center;
+  background-image: url(../images/error.png);
+  background-repeat: no-repeat;
+  padding-top: 60px;
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+  top: 40%;
+  left: 0;
+  text-align: center;
+}
+
+h1 {
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+.esriSimpleSlider {
+  top: 75px;
+}
+
+.drawer-open .esriSimpleSlider {
+  left: 300px;
+}
+
+.toggle {
+  text-align: center;
+  padding: 6px 10px;
+  margin: 0 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+  line-height: normal;
+  display: inline-block;
+  vertical-align: middle;
+  background-color: rgba(0,0,0,0.15);
+}
+
+.toggle:hover,
+.toggle:focus {
+  color:#eee;
+  border-color: rgba(0,0,0,0.15);
+}
+
+.toggle span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.toggle .esri-icon-expand {
+  display: none;
+}
+
+.drawer-open .toggle .esri-icon-expand {
+  display: inline-block;
+}
+
+.toggle .esri-icon-collapse {
+  display: inline-block;
+}
+
+.drawer-open .toggle .esri-icon-collapse {
+  display: none;
+}
+
+#mapDiv {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.esriSimpleSlider,
+.drawer-animation,
+.esriUI {
+  -webkit-transition: left 250ms ease;
+  -moz-transition: left 250ms ease;
+  -ms-transition: left 250ms ease;
+  -o-transition: left 250ms ease;
+  transition: left 250ms ease;
+}
+
+.drawer-top {
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+  color: #fff;
+  position: absolute;
+  z-index: 36;
+  top: 0;
+  left: 0px;
+  width: 100%;
+  height: 54px;
+  padding: 10px 0;
+  box-sizing: border-box;
+}
+
+.drawer-open .drawer-top {
+  left: 280px;
+}
+
+.drawer-container {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.drawer-side {
+  color: #fff;
+  position: absolute;
+  top: 0;
+  left: -280px;
+  z-index: 37;
+  width: 280px;
+  height: 100%;
+  padding: 20px;
+  margin: 0;
+  border-right: 1px solid rgba(0,0,0,0.15);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.drawer-open .drawer-side {
+  left: 0;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.drawer-center {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.esriLayerList .esriList,
+.esriLayerList .esriTitle {
+  background-color: transparent;
+  color: #fff;
+  border-color: rgba(0,0,0,0.15);
+}
+
+#search {
+  position: absolute;
+  top: 75px;
+  right: 20px;
+  z-index: 35;
+}
