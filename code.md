@@ -4,9 +4,13 @@
 
 Require LayerList widget
 
-```"esri/dijit/LayerList",```
+```
+    "esri/dijit/LayerList",
+```
 
-```LayerList```
+```
+    LayerList
+```
 
 ## Step 2
 
