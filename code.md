@@ -4,11 +4,11 @@
 
 Require LayerList widget
 
-```
+```javascript
     "esri/dijit/LayerList",
 ```
 
-```
+```javascript
     LayerList
 ```
 
@@ -16,14 +16,14 @@ Require LayerList widget
 
 Add LayerList widget
 
-```
+```javascript
     var layerList = new LayerList({
       map: this.map
     },"layerListDom");
     layerList.startup();
 ```   
         
-```
+```html
     <div id="layerListDom"></div>
 ```   
         
@@ -31,7 +31,7 @@ Add LayerList widget
 
 Add HTML for title, and side drawer
         
-```
+```html
     <div class="drawer-container">
       <div class="drawer-side drawer-animation theme-background">
         <h1 id="mapTitle"></h1>
@@ -54,7 +54,7 @@ Add HTML for title, and side drawer
 
 Add CSS Styles for the drawer and template theme.
 
-```
+```css
     h1 {
       margin: 0 0 10px 0;
       padding: 0;
@@ -185,7 +185,7 @@ Add CSS Styles for the drawer and template theme.
 
 Template theme style
 
-```
+```html
     <style>
     .theme-background{
       background-color: rgba(25, 111, 166, 0.8);
@@ -197,7 +197,7 @@ Template theme style
 
 Config title
 
-```
+```javascript
     "title": "My Map",
 ```
 
@@ -206,7 +206,7 @@ Config title
 
 Set title from config title or map title
 
-```
+```javascript
     var title = this.config.title || response.itemInfo.item.title;
     document.title = title;
 
@@ -217,7 +217,7 @@ Set title from config title or map title
 
 Drawer responsive code
 
-```
+```javascript
     // document window
     var w = win.get(document);
 
@@ -261,12 +261,12 @@ Drawer responsive code
 
 Requires for the drawer.
 
-```
+```javascript
     "dojo/window",
     "dojo/on",
 ``` 
   
-```  
+```javascript
     win,
     on
 ```  
@@ -275,7 +275,7 @@ Requires for the drawer.
 
 LayerList styles to match theme.
 
-```
+```css
     .esriLayerList .esriList,
     .esriLayerList .esriTitle {
       background-color: transparent;
@@ -288,7 +288,7 @@ LayerList styles to match theme.
 
 LayerList layers that are not basemap layers.
 
-```
+```javascript
     var layers = arcgisUtils.getLayerList(response);
         
     var layerList = new LayerList({
@@ -302,22 +302,22 @@ LayerList layers that are not basemap layers.
 
 Add search widget.
 
-```
+```javascript
     "esri/dijit/Search",
 ```       
               
-```       
+```javascript      
     var search = new Search({
       map: this.map
     },"search");
     search.startup();
 ```       
         
-```      
+```html     
     <div id="search"></div>
 ```      
         
-```    
+```css  
     #search {
       position: absolute;
       top: 75px;
@@ -334,15 +334,15 @@ Remove style tag in HTML for customizable theme.
 
 Require dojo color
 
-```
+```javascript
     "dojo/_base/Color",
 ```
 
-```
+```javascript
     Color,
 ```
 
-```
+```javascript
     var color, colorArr, colorCSS;
     if(this.config.color){
       var c = new Color(this.config.color);
@@ -365,15 +365,15 @@ Require dojo color
 
 Set boolean config options
 
-```
+```javascript
     if (this.config.enableLayerList){}
 ```
 
-```
+```javascript
     if(this.config.enableSearch){}
 ```
 
-```
+```javascript
     if(this.config.enableSummary){}
 ```
 
@@ -381,7 +381,7 @@ Set boolean config options
 
 Search url param option
 
-```
+```javascript
     if(this.config.search){
       search.set("value", this.config.search);
       search.search(); 
