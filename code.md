@@ -2,6 +2,8 @@
 
 ## Require LayerList Widget
 
+[LayerList](https://developers.arcgis.com/javascript/jsapi/layerlist-amd.html)
+
 ```javascript
     "esri/dijit/LayerList",
 ```
@@ -423,6 +425,9 @@ Add "search" to config params array in template config.
 ## Configurable JSON
 
 Configuration panel JSON
+
+[Configurable Templates](doc.arcgis.com/en/arcgis-online/create-maps/configurable-templates.htm)
+[jsonformatter.curiousconcept.com](http://jsonformatter.curiousconcept.com/)
 
 ```javascript
     {  
