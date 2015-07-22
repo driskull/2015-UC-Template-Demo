@@ -33,7 +33,7 @@ define([
   
   "esri/dijit/Search",
   
-  "dojo/_base/Color",
+   "dojo/_base/Color",
 
   "dojo/domReady!"
 ], function (
@@ -46,7 +46,6 @@ define([
   on,
   Search,
   Color
-   
 ) {
   return declare(null, {
     config: {},
@@ -121,40 +120,33 @@ define([
         /*  Map is ready. Start writing code        */
         /* ---------------------------------------- */
         
-        var title = this.config.title || response.itemInfo.item.title;
-        document.title = title;
-        
-        var summary = this.config.summary || response.itemInfo.item.snippet;
-        
-        dom.byId("mapTitle").innerHTML = title;
-        
-        if(this.config.enableSummary){
-          dom.byId("mapSummary").innerHTML = summary;
+        var color, colorArr, colorCSS;
+        if(this.config.color){
+          var c = new Color(this.config.color);
+          colorArr = c.toRgb();
+          colorArr.push(0.8);
+          color = new Color(colorArr);
         }
+        else{
+          color = new Color([25, 111, 166, 0.8]);
+        }
+
+        colorCSS = color.toCss(true);
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".theme-background { background-color: " + colorCSS + "; }";
+        document.body.appendChild(css);
+        
         
         if (this.config.enableLayerList){
-        
-        var layers = arcgisUtils.getLayerList(response);
-        
-        var layerList = new LayerList({
-          layers: layers,
-          map: this.map
-        },"layerListDom");
-        layerList.startup();
-          
-        }
-        
-        if(this.config.enableSearch){
-          var search = new Search({
+          var layers = arcgisUtils.getLayerList(response);
+
+          var layerList = new LayerList({
+            layers: layers,
             map: this.map
-          },"search");
-          search.startup();
-          if(this.config.search){
-            search.set("value", this.config.search);
-            search.search(); 
-          }
+          },"layerListDom");
+          layerList.startup();
         }
-        
         
         // document window
         var w = win.get(document);
@@ -194,22 +186,31 @@ define([
         });
         drawer();
         
-        var color, colorArr, colorCSS;
-        if(this.config.color){
-          var c = new Color(this.config.color);
-          colorArr = c.toRgb();
-          colorArr.push(0.8);
-          color = new Color(colorArr);
-        }
-        else{
-          color = new Color([25, 111, 166, 0.8]);
+        var title = this.config.title || response.itemInfo.item.title;
+        document.title = title;
+
+        dom.byId("mapTitle").innerHTML = title;
+        
+        if(this.config.enableSummary){
+          var summary = this.config.summary || response.itemInfo.item.snippet;
+          dom.byId("mapSummary").innerHTML = summary;
         }
         
-        colorCSS = color.toCss(true);
-        var css = document.createElement("style");
-        css.type = "text/css";
-        css.innerHTML = ".theme-background { background-color: " + colorCSS + "; }";
-        document.body.appendChild(css);
+        if(this.config.enableSearch){
+          var search = new Search({
+            map: this.map
+          },"search");
+          search.startup();
+          
+          if(this.config.search){
+            search.set("value", this.config.search);
+            search.search(); 
+          }
+          
+        }
+        
+        console.log("My Config:", this.config);
+        
         
         
         /* ---------------------------------------- */

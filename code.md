@@ -1,8 +1,6 @@
 # UC Demo Code
 
-## Step 1
-
-Require LayerList widget
+## Require LayerList Widget
 
 ```javascript
     "esri/dijit/LayerList",
@@ -12,9 +10,7 @@ Require LayerList widget
     LayerList
 ```
 
-## Step 2
-
-Add LayerList widget
+## Add LayerList widget
 
 ```javascript
     var layerList = new LayerList({
@@ -27,7 +23,7 @@ Add LayerList widget
     <div id="layerListDom"></div>
 ```   
         
-## Step 3
+## Side Drawer
 
 Add HTML for title, and side drawer
         
@@ -50,7 +46,7 @@ Add HTML for title, and side drawer
     </div>
 ```
 
-## Step 4
+## CSS Styles for app
 
 Add CSS Styles for the drawer and template theme.
 
@@ -181,7 +177,7 @@ Add CSS Styles for the drawer and template theme.
     }
 ```
 
-## Step 5
+## Template color theme
 
 Template theme style
 
@@ -193,26 +189,7 @@ Template theme style
     </style>
 ```
 
-## Step 6
-
-Config title
-
-```javascript
-    "title": "My Map",
-```
-
-## Step 7
-
-Set title from config title or map title
-
-```javascript
-    var title = this.config.title || response.itemInfo.item.title;
-    document.title = title;
-
-    dom.byId("mapTitle").innerHTML = title;
-```
-
-## Step 8
+## Drawer JavaScript
 
 Drawer responsive code
 
@@ -255,8 +232,8 @@ Drawer responsive code
     });
     drawer();
 ```  
-        
-## Step 9
+
+## Drawer code requires
 
 Requires for the drawer.
 
@@ -270,19 +247,7 @@ Requires for the drawer.
     on
 ```  
 
-## Add other config options
-
-```javascript
-    "title": "My Map",
-    "color": null,
-    "enableSearch": true,
-    "enableLayerList": true,
-    "enableSummary": true,
-    "summary": "",
-    "search": "",
-```
-
-## Step 10
+## LayerList Styling
 
 LayerList styles to match theme.
 
@@ -295,7 +260,7 @@ LayerList styles to match theme.
     }
 ```
 
-## Step 11
+## LayerList Layers
 
 LayerList layers that are not basemap layers.
 
@@ -308,10 +273,50 @@ LayerList layers that are not basemap layers.
     },"layerListDom");
     layerList.startup();
 ```
-  
-## Step 12
 
-Add search widget.
+## Title and Summary
+
+Config title & Summary
+
+```javascript
+    "title": "My Map",
+    "summary": "",
+```
+
+## Add Title
+
+Set title from config title or map title
+
+```javascript
+    var title = this.config.title || response.itemInfo.item.title;
+    document.title = title;
+
+    dom.byId("mapTitle").innerHTML = title;
+```
+
+## Add Summary
+
+```javascript
+    var summary = this.config.summary || response.itemInfo.item.snippet;
+    dom.byId("mapSummary").innerHTML = summary;
+```
+
+```html
+    <p id="mapSummary"></p>
+```
+
+## Add other config options
+
+```javascript
+    "color": null,
+    "enableSearch": true,
+    "enableLayerList": true,
+    "enableSummary": true,
+    "summary": "",
+    "search": "",
+```
+  
+## Search Widget
 
 ```javascript
     "esri/dijit/Search",
@@ -337,7 +342,85 @@ Add search widget.
     }
 ```
 
-## Step 13
+## Remove Style tag
+
+Remove style tag in HTML for customizable theme.
+
+## Dojo color for theme
+
+Require dojo color
+
+```javascript
+    "dojo/_base/Color",
+```
+
+```javascript
+    Color,
+```
+
+```javascript
+    var color, colorArr, colorCSS;
+    if(this.config.color){
+      var c = new Color(this.config.color);
+      colorArr = c.toRgb();
+      colorArr.push(0.8);
+      color = new Color(colorArr);
+    }
+    else{
+      color = new Color([25, 111, 166, 0.8]);
+    }
+
+    colorCSS = color.toCss(true);
+    var css = document.createElement("style");
+    css.type = "text/css";
+    css.innerHTML = ".theme-background { background-color: " + colorCSS + "; }";
+    document.body.appendChild(css);
+```
+
+## Boolean template options
+
+Set boolean config options
+
+```javascript
+    if (this.config.enableLayerList){}
+```
+
+```javascript
+    if(this.config.enableSearch){}
+```
+
+```javascript
+    if(this.config.enableSummary){}
+```
+
+## URL Param for search
+
+Search url param option.
+
+Add "search" to config params array in template config.
+
+```javascript
+    "urlItems": [
+      "search",
+      "center",
+      "extent",
+      "level",
+      "theme" // example param. ?theme=<my theme>
+    ],
+```
+
+```javascript
+    console.log("My Config:", this.config);
+```
+
+```javascript
+    if(this.config.search){
+      search.set("value", this.config.search);
+      search.search(); 
+    }
+```
+
+## Configurable JSON
 
 Configuration panel JSON
 
@@ -398,69 +481,5 @@ Configuration panel JSON
         "summary": "",
         "search": ""
       }
-    }
-```
-
-## Step 14
-
-Remove style tag in HTML for customizable theme.
-
-## Step 15
-
-Require dojo color
-
-```javascript
-    "dojo/_base/Color",
-```
-
-```javascript
-    Color,
-```
-
-```javascript
-    var color, colorArr, colorCSS;
-    if(this.config.color){
-      var c = new Color(this.config.color);
-      colorArr = c.toRgb();
-      colorArr.push(0.8);
-      color = new Color(colorArr);
-    }
-    else{
-      color = new Color([25, 111, 166, 0.8]);
-    }
-
-    colorCSS = color.toCss(true);
-    var css = document.createElement("style");
-    css.type = "text/css";
-    css.innerHTML = ".theme-background { background-color: " + colorCSS + "; }";
-    document.body.appendChild(css);
-```
-
-## Step 16
-
-Set boolean config options
-
-```javascript
-    if (this.config.enableLayerList){}
-```
-
-```javascript
-    if(this.config.enableSearch){}
-```
-
-```javascript
-    if(this.config.enableSummary){}
-```
-
-## Step 17
-
-Search url param option.
-
-Add "search" to config params array in template config.
-
-```javascript
-    if(this.config.search){
-      search.set("value", this.config.search);
-      search.search(); 
     }
 ```
