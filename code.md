@@ -303,7 +303,6 @@ Set title from config title or map title
     "enableSearch": true,
     "enableLayerList": true,
     "enableSummary": true,
-    "summary": "",
     "search": "",
 ```
   
