@@ -15,11 +15,14 @@
 ## Add LayerList widget
 
 ```javascript
+    var layers = arcgisUtils.getLayerList(response);
+        
     var layerList = new LayerList({
+      layers: layers,
       map: this.map
     },"layerListDom");
     layerList.startup();
-```   
+```
         
 ```html
     <div id="layerListDom"></div>
@@ -260,20 +263,6 @@ LayerList styles to match theme.
       color: #fff;
       border-color: rgba(0,0,0,0.15);
     }
-```
-
-## LayerList Layers
-
-LayerList layers that are not basemap layers.
-
-```javascript
-    var layers = arcgisUtils.getLayerList(response);
-        
-    var layerList = new LayerList({
-      layers: layers,
-      map: this.map
-    },"layerListDom");
-    layerList.startup();
 ```
 
 ## Title and Summary
